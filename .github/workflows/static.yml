@@ -5,6 +5,9 @@ on:
     paths: ['src/*.rs']
   pull_request:
     paths: ['src/*.rs']
+defaults:
+  run:
+    shell: bash
 jobs:
   test:
     runs-on: self-hosted
