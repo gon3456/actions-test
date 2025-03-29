@@ -8,7 +8,6 @@ fn is_odd(num: i32) -> bool {
     !is_even(num)
 }
 
-
 #[cfg(test)]
 mod tests {
     use super::*;
