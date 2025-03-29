@@ -1,0 +1,27 @@
+---
+name: Static Analysis
+on:
+  push:
+    paths: ['src/*.rs']
+  pull_request:
+    paths: ['src/*.rs']
+jobs:
+  test:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: clippy, rustfmt
+      - uses: Swatinem/rust-cache@v2
+
+      - name: Check formatting
+        run: cargo fmt --all -- --check
+
+      - name: Run Clippy
+        run: cargo clippy -- -D warnings
+
+      - name: Run cargo-audit
+        run: |
+          cargo install cargo-audit
+          cargo audit
