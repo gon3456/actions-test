@@ -10,7 +10,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  test:
+  upload:
     runs-on: self-hosted
     steps:
       - run: date > date.txt
@@ -18,3 +18,12 @@ jobs:
         with:
           name: uploaded
           path: date.txt
+  download:
+    needs: [upload]
+    runs-on: self-hosted
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: uploaded
+          path: downloaded
+      - run: cat downloaded/date.txt
