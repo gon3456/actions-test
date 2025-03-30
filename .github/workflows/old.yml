@@ -1,8 +1,0 @@
----
-name: Old
-on: worlflow_dispatch
-jobs:
-  test:
-    runs-on: self-hosted
-    steps:
-      - uses: dtolnay/rust-toolchain@stable
