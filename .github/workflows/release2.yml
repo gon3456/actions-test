@@ -16,6 +16,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: dtolnay/rust-toolchain@stable
+      - name: Install the gh cli
+        uses: ksivamuthu/actions-setup-gh-cli@<VERSION>
+        with:
+          version: 2.69.0
       - run: cargo build --release
       - run: |
           gh release create "${VERSION}" --title "${VERSION}" --generate-notes
