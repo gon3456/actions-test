@@ -1,3 +1,5 @@
+use std::env;
+
 #[allow(dead_code)]
 fn is_even(num: i32) -> bool {
     num % 2 == 0
@@ -59,5 +61,6 @@ mod tests {
 }
 
 fn main() {
+    println!("version: {}", env!("CARGO_PKG_VERSION"));
     println!("To test, command `cargo test`");
 }
