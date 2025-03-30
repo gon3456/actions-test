@@ -59,5 +59,5 @@ mod tests {
 }
 
 fn main() {
-    println!("テストを実行するには `cargo test` を使用してください");
+    println!("To test, command `cargo test`");
 }
