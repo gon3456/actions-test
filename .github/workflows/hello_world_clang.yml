@@ -1,0 +1,39 @@
+---
+name: Windows Clang Hello World
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: [self-hosted, Windows]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup WinLibs with Clang
+        uses: bwoodsend/setup-winlibs-action@v1
+        with:
+          tag: '14.2.0-18.1.8-12.0.0-r1'
+          with_clang: true
+
+      - name: Create Hello World source file
+        run: |
+          echo '#include <iostream>
+
+          int main() {
+              std::cout << "Hello, World from Clang on Windows!" << std::endl;
+              return 0;
+          }' > hello.cpp
+        shell: bash
+
+      - name: Compile with Clang
+        run: |
+          clang++ -v
+          clang++ hello.cpp -o hello.exe
+        shell: bash
+
+      - name: Run the program
+        run: ./hello.exe
+        shell: bash
