@@ -20,7 +20,7 @@ jobs:
       - name: Setup WinLibs with Clang
         uses: bwoodsend/setup-winlibs-action@v1
         with:
-          tag: '14.2.0-18.1.8-12.0.0-r1'
+          #          tag: '14.2.0-18.1.8-12.0.0-r1'
           with_clang: true
 
       - name: Create Hello World source file
