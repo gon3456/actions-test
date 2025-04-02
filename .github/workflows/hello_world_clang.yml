@@ -8,7 +8,12 @@ jobs:
   build:
     runs-on: [self-hosted, Windows]
 
+    defaults:
+      shell: msys2 {0}
+
     steps:
+      - uses: msys2/setup-msys2@v2
+
       - name: Checkout repository
         uses: actions/checkout@v3
 
